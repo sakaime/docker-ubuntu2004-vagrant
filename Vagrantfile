@@ -102,12 +102,19 @@ Vagrant.configure("2") do |config|
     sudo gpasswd -a vagrant docker
 
     # minikube のインストール
-    sudo curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     
-    sudo chmod +x minikube
+    chmod +x minikube
 
     sudo mkdir -p /usr/local/bin/
 
     sudo install minikube /usr/local/bin/
+
+    # kubectl のインストール
+    curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+
+    chmod +x ./kubectl
+
+    sudo mv ./kubectl /usr/local/bin/kubectl
   SHELL
 end

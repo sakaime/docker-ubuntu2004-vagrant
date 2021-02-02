@@ -54,7 +54,14 @@ Vagrant.configure("2") do |config|
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-    vb.memory = "1024"
+    vb.memory = "8192"
+
+    vb.customize [
+      "modifyvm", :id,
+      "--cpus", "2",
+      "--ioapic", "on",
+      "--chipset", "ich9"
+    ]
   end
   #
   # View the documentation for the provider you are using for more
@@ -93,5 +100,14 @@ Vagrant.configure("2") do |config|
     sudo groupadd docker
 
     sudo gpasswd -a vagrant docker
+
+    # minikube のインストール
+    sudo curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    
+    sudo chmod +x minikube
+
+    sudo mkdir -p /usr/local/bin/
+
+    sudo install minikube /usr/local/bin/
   SHELL
 end

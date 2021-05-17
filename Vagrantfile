@@ -171,7 +171,8 @@ Vagrant.configure("2") do |config|
 
     # Ansible のインストール
     sudo apt-add-repository -y -u ppa:ansible/ansible
-    sudo apt-get install ansible
+    sudo apt-get update
+    sudo apt-get install -y ansible
 
     # Terraform のインストール
     sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl

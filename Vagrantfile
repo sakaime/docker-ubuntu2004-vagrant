@@ -120,6 +120,7 @@ Vagrant.configure("2") do |config|
     sudo apt-get update
     sudo apt-get install -y \
       php8.0 \
+      php7.4 \
       build-essential \
       libxml2-dev \
       libssl-dev \
@@ -139,9 +140,8 @@ Vagrant.configure("2") do |config|
       libzip-dev \
       libapache2-mod-fcgid \
       autoconf
-    sudo apt-get install -y php8.0-fpm
-    php-fpm8.0 -v
-    sudo apt-get install -y php8.0-{common,intl,mysql,pgsql,sqlite3,gd,xml,soap,xdebug,mbstring,cli,curl,zip,bz2,readline}
+    sudo apt-get install -y php8.0-{fpm,common,intl,mysql,pgsql,sqlite3,gd,xml,soap,xdebug,mbstring,cli,curl,zip,bz2,readline}
+    sudo apt-get install -y php7.4-{fpm,common,intl,mysql,pgsql,sqlite3,gd,xml,soap,xdebug,mbstring,cli,curl,zip,bz2,readline}
     sudo a2enmod proxy_fcgi setenvif
     sudo a2enconf php8.0-fpm
     sudo systemctl restart apache2

@@ -172,6 +172,12 @@ Vagrant.configure("2") do |config|
     # Ansible のインストール
     sudo apt-add-repository -y -u ppa:ansible/ansible
     sudo apt-get install ansible
+
+    # Terraform のインストール
+    sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
+    curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+    sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+    sudo apt-get update && sudo apt-get install terraform
   SHELL
 
   config.vm.provision "shell", privileged: false, inline: <<-SHELL

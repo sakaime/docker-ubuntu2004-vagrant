@@ -154,7 +154,7 @@ Vagrant.configure("2") do |config|
     php -r "unlink('composer-setup.php');"
     mv ./composer.phar $(dirname $(which php))/composer && chmod +x "$_"
 
-    # Node.js をインストール
+    # Node.js のインストール
     export NVM_DIR="/home/vagrant/.nvm" && (
       git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
       cd "$NVM_DIR"
@@ -168,6 +168,10 @@ Vagrant.configure("2") do |config|
     nvm install stable --latest-npm
     nvm alias default stable
     npm install -g yarn
+
+    # Ansible のインストール
+    sudo apt-add-repository -y -u ppa:ansible/ansible
+    sudo apt-get install ansible
   SHELL
 
   config.vm.provision "shell", privileged: false, inline: <<-SHELL

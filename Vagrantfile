@@ -85,7 +85,7 @@ Vagrant.configure("2") do |config|
     sudo apt-get install docker-ce -y
 
     # Docker Compose のインストール
-    sudo curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+    sudo curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
 
     # sudo を省いて docker コマンドを使用できるようにする
